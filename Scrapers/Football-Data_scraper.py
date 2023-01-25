@@ -65,8 +65,8 @@ for thread in threads:
 merged_df = pd.concat(dfs, ignore_index=True)
 
 merged_df = merged_df[['Div', 'Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'FTR', 'HTHG', 'HTAG', 'HTR', 'HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR', 'PSH', 'PSD', 'PSA']]
-merged_df['Date'] = pd.to_datetime(merged_df['Date'])
 merged_df = merged_df[merged_df['Date'].notnull()]
+merged_df['Date'] = pd.to_datetime(merged_df['Date'], dayfirst=True)
 merged_df = merged_df.sort_values(by='Date').reset_index()
 merged_df = merged_df.drop('index',axis=1)
 merged_df.index.name = 'Index'
